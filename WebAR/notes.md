@@ -1,4 +1,0 @@
-#Notes for WebAR
-
-## Service
-
