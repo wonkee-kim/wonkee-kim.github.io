@@ -1,0 +1,40 @@
+# Point105-AR.OBJExporter MTL File
+# Material Count: 5
+
+newmtl "eames_seat"
+Kd 0.3309 0.0086 0.0086 
+Ke 0.0000 0.0000 0.0000 
+d 1
+Tr 0
+illum 1
+
+newmtl "eames_metal"
+Kd 0.0135 0.0135 0.0135 
+Ke 0.0000 0.0000 0.0000 
+d 1
+Tr 0
+illum 1
+
+newmtl "eames_metal_nut"
+Kd 0.2657 0.2657 0.2657 
+Ke 0.0000 0.0000 0.0000 
+d 1
+Tr 0
+illum 1
+
+newmtl "eames_stopper"
+Kd 0.2784 0.2784 0.2784 
+Ke 0.0000 0.0000 0.0000 
+d 1
+Tr 0
+illum 1
+
+newmtl "eames_legs"
+Kd 1.0000 1.0000 1.0000 
+Ke 0.0000 0.0000 0.0000 
+map_d eames_legs_diffuse.png
+d 0
+Tr 1
+illum 1
+map_Kd eames_legs_diffuse.png
+
