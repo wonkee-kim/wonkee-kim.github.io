@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebAR model platform test</title>
+
+    <!-- 💁 Include both scripts below to support all browsers! -->
+    <!-- Loads <model-viewer> for modern browsers: -->
+    <script type="module"
+        src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js">
+    </script>
+
+    <!-- Loads <model-viewer> for old browsers like IE11: -->
+    <!-- https://stackoverflow.com/questions/23331873/html-img-onclick-javascript -->
+    <script nomodule
+        src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js">
+    </script>
+    
+    
+    <!-- Open Different URL depending on iOS/Android -->
+    <!-- https://www.geeksforgeeks.org/detect-a-device-is-ios-or-not-using-javascript -->
+    <script type="text/javascript">
+    function openLink(android, ios) {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        
+        if (/android/i.test(userAgent)) {
+            window.open(arguments[0], "_self");
+            return arguments[0];
+        }
+
+        // iOS detection from: http://stackoverflow.com/a/9039885/177710
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            window.open(arguments[1], "_self");
+            return arguments[1];
+        }
+        
+        window.open(arguments[0], "_self");
+        return arguments[0];
+    }
+    </script>
+    
+</head>
+<body>
+
+    <p>
+    
+    <div>
+        <img src="../Luxury%2520Composite%2520Stone%2520Baths%2520-%2520Edenstone_files/home_gallery_small1.jpg"
+             onclick = "openLink('../Models/Bathtub_sample.glb', '../Models/Bathtub_sample.usdz')">
+    </div>
+    
+    <p>
+    
+</body>
+</html>

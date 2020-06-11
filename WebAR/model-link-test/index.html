@@ -13,16 +13,71 @@
 
     <!-- Loads <model-viewer> for old browsers like IE11: -->
 
+    <!-- https://stackoverflow.com/questions/23331873/html-img-onclick-javascript -->
     <script nomodule
         src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js">
     </script>
+    
+    <script type="text/javascript">
+    function getMobileOperatingSystem(a, b) {
+      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+          // Windows Phone must come first because its UA also contains "Android"
+        if (/windows phone/i.test(userAgent)) {
+            document.getElementById("demo").innerHTML = arguments[0];
+            window.open(arguments[0], "_self");
+            return arguments[0];
+        }
+
+        if (/android/i.test(userAgent)) {
+            document.getElementById("demo").innerHTML = arguments[0];
+            window.open(arguments[0], "_self");
+            return arguments[0];
+        }
+
+        // iOS detection from: http://stackoverflow.com/a/9039885/177710
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            document.getElementById("demo").innerHTML = arguments[1];
+            window.open(arguments[1], "_self");
+            return arguments[1];
+        }
+
+        document.getElementById("demo").innerHTML = arguments[0];
+        window.open(arguments[0], "_self");
+        return arguments[0];
+    }
+    </script>
+    
+    <script type="text/javascript">
+    function optest(a, b) {
+      window.open(arguments[0]);
+    }
+    </script>
+    
+    <!--https://www.geeksforgeeks.org/detect-a-device-is-ios-or-not-using-javascript/-->
 </head>
 <body>
 
     <p>
     
+        <!--<a href ios-src="./ios.html" src="./android.html">Quick Look Test</a>-->
+        
+        <button type="button" onclick ="getMobileOperatingSystem('./android.html', './ios.html')"> Button </button>
+        <p id="demo">A Paragraph</p>
+    
+    <p>
+        <a href="getMobileOperatingSystem('./android.html', './ios.html')">Test13</a>
+    </p>
+    
+    <button type="button" onclick ="optest('./android.html', './ios.html')"> Button2 </button>
+    
+    <p>
+    <p>
+    
     <div>
-        <a href ios-src="./ios.html" src="./android.html">Quick Look Test</a>
+        <a href="getMobileOperatingSystem('./android.html','./ios.html')">
+        <img src="https://wonkee-kim.github.io/WebAR/Fender/stratocaster_2x.jpg" width="200" height="200">
+        </a>
     </div>
     
     <p>
