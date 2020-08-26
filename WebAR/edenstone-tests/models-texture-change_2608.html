@@ -10,7 +10,31 @@
     <script nomodule
         src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js">
     </script>
+    
+    <html lang="en" class="js-focus-visible"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+       
+        
+      <meta name="viewport" content="width=device-width, user-scalable=no,
+      minimum-scale=1.0, maximum-scale=1.0">
+      <link type="text/css" href="./_model-viewer_ Augmented Reality_files/examples.css" rel="stylesheet">
+      <link rel="shortcut icon" type="image/png" href="https://modelviewer.dev/assets/favicon.png">
+
+      <!-- The following libraries and polyfills are recommended to maximize browser support -->
+
+      <!-- 🚨 REQUIRED: Web Components polyfill to support Edge and Firefox < 63 -->
+        <script src="https://modelviewer.dev/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+
+      <!-- 💁 OPTIONAL: Intersection Observer polyfill for better performance in Safari and IE11 -->
+        <script src="https://modelviewer.dev/node_modules/intersection-observer/intersection-observer.js"></script>
+
+      <!-- 💁 OPTIONAL: Resize Observer polyfill improves resize behavior in non-Chrome browsers -->
+        <script src="https://modelviewer.dev/node_modules/resize-observer-polyfill/dist/ResizeObserver.js"></script>
+
+      <!-- 💁 OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
+        <script src="https://modelviewer.dev/node_modules/focus-visible/dist/focus-visible.js" defer=""></script>
 </head>
+        
+        
 <body>
     <p></p>
     <p></p>
@@ -40,7 +64,7 @@
     <div class="AR view">
         <div class="BT-03(2)">
         BT-03(2)
-        <model-viewer id="bt3" alt="BT-03-2" ar="" ar-modes="webxr scene-viewer quick-look" ar-scale="7%" auto-rotate="" background-color="#EEE" camera-controls="" camera-orbit="-90deg 60deg 16.0m" src="./testmodels_1208/BT3_Light.glb" ios-src="./testmodels_1208/BT3_Light.usdz" rel="height:600px;width:80%" style="height:600px;width:80%" quick-look-browsers="safari chrome">
+        <model-viewer id="bt3" alt="BT-03-2" ar="" ar-modes="webxr scene-viewer quick-look" ar-scale="7%" auto-rotate="" background-color="#EEE" camera-controls="" camera-orbit="-90deg 60deg 16.0m" src="./testmodels_1208/BT3_Light.glb" ios-src="./testmodels_1208/BT3_Light.usdz" rel="height:600px;width:80%" style="height:600px;width:80%" quick-look-browsers="safari chrome" data-js-focus-visible="" ar-status="not-presenting">
             <div id="controls">
             <div>
               Colour<br>
@@ -81,6 +105,40 @@
     })
 
     </script>
+    
+    
+    
+    
+    <script>
+      document.querySelector("#model-viewer").addEventListener('ar-status', (event) => {
+        if(event.detail.status === 'failed'){
+          const error = document.querySelector("#error");
+          error.classList.remove('hide');
+          error.addEventListener('transitionend',(event) => {
+            error.classList.add('hide');
+          });
+        }
+      });
+    </script>
+    <style>
+      #error {
+        background-color: #ffffffdd;
+        border-radius: 16px;
+        padding: 16px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate3d(-50%, -50%, 0);
+        transition: opacity 0.3s;
+      }
+      #error.hide {
+        opacity: 0;
+        visibility: hidden;
+        transition: visibility 2s, opacity 1s 1s;
+      }
+    </style>
+    
+    
         
 </body>
 </html>
