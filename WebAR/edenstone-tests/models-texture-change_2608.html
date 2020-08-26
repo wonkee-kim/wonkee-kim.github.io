@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bath Tube Models - BT3</title>
+    <!-- Loads <model-viewer> for modern browsers: -->
+    <script type="module"
+        src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js">
+    </script>
+    <!-- Loads <model-viewer> for old browsers like IE11: -->
+    <script nomodule
+        src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js">
+    </script>
+</head>
+<body>
+    <p></p>
+    <p></p>
+    
+    <div class="AR view">
+        <div class="BT-03">
+        BT-03
+        <model-viewer id="bt3" alt="BT-03" ar="" ar-scale="7%" auto-rotate="" background-color="#EEE" camera-controls="" camera-orbit="-90deg 60deg 16.0m" src="./testmodels_1208/BT3_Light.glb" ios-src="./testmodels_1208/BT3_Light.usdz" rel="height:600px;width:80%" style="height:600px;width:80%" quick-look-browsers="safari chrome">
+            <div id="controls">
+            <div>
+              Colour<br>
+              <select id="diffuse">
+                <option value="./testmodels_1208/tex_light.jpg">Light Colour</option>
+                <option value="./testmodels_1208/tex_grey.jpg">Grey Colour</option>
+                <option value="./testmodels_1208/tex_dark.jpg">Dark Colour</option>
+              </select>
+            </div>
+            </div>
+        </model-viewer>
+        </div>
+    </div>
+    
+    <p></p>
+    <p></p>
+    
+    
+    
+    <p></p>
+    <p></p>
+    
+    
+    <script type="module">
+    const modelViewerTexture = document.querySelector("model-viewer#bt3");
+
+    modelViewerTexture.addEventListener("scene-graph-ready", (ev) => {
+
+      let material = modelViewerTexture.model.materials[0];
+
+      let applyPBRTexture = (channel, event) => {
+        material.pbrMetallicRoughness[channel].texture.source.setURI(event.target.value);
+      }
+
+      document.querySelector('#diffuse').addEventListener('input', (event) => {
+        applyPBRTexture('baseColorTexture', event);
+      });
+
+      //document.querySelector('#metallicRoughness').addEventListener('input', (event) => {
+        //applyPBRTexture('metallicRoughnessTexture', event);
+      //});
+    })
+
+    </script>
+        
+</body>
+</html>
